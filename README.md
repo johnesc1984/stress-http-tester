@@ -250,6 +250,14 @@ Para pruebas de carga más altas:
 Las contribuciones son bienvenidas.
 Si encuentras un error o deseas proponer una mejora, puedes abrir un issue o enviar un pull request.
 
+## ❤️ Apoya el proyecto
+
+Si **stress-http-tester** te ayudó a probar tus APIs puedes apoyar su desarrollo.
+
+[![Donar con MercadoPago](https://img.shields.io/badge/Donar-MercadoPago-009EE3?logo=mercadopago&logoColor=white)](https://link.mercadopago.com.co/johncastiblanco)
+
+link.mercadopago.com.co/johncastiblanco
+
 # Licencia
 Uso personal y educativo únicamente.
 El uso comercial requiere autorización del autor.
