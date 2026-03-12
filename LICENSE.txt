@@ -1,0 +1,23 @@
+Copyright (c) 2026 John Castiblanco
+
+All rights reserved.
+
+Permission is granted to use this software for personal,
+educational, and non-commercial purposes only.
+
+You may NOT:
+
+- Sell this software
+- Use this software for commercial purposes
+- Redistribute this software as part of a paid product
+- Claim this software as your own work
+
+The author retains full ownership and copyright.
+
+Free for personal and educational use.
+
+Any commercial use requires explicit written permission
+from the author.
+
+Commercial licensing contact:
+johnescastiblanco@gmail.com
