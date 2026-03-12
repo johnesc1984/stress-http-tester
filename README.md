@@ -1,18 +1,85 @@
-#Instalacion
+# Stress HTTP Tester
+🚀 **Stress HTTP Tester** es una herramienta ligera para **realizar pruebas de estrés a APIs HTTP** desde Node.js.
+Permite enviar múltiples peticiones concurrentes a un endpoint, validar respuestas y medir el rendimiento del servidor.
 
-npm i -g stress-http-tester
+
+### Puede usarse como:
+
+* **CLI (herramienta de terminal)**
+* **Librería dentro de proyectos Node.js**
+
+Es ideal para:
+
+* Pruebas de carga de APIs
+* Medición de rendimiento
+* Validación automática de respuestas
+* Detectar endpoints lentos
+* Pruebas antes de despliegues en producción
 
 ---
-#uso
-Crea un archivo con los test.json
 
-```js
+# Características
 
+* Enviar **miles de peticiones HTTP**
+* Configurar **concurrencia**
+* Validar **código de estado HTTP**
+* Validar **estructura de respuesta**
+* Generar **valores aleatorios en payload**
+* Mostrar **barra de progreso en consola**
+* Usar mediante **CLI o como librería**
+* Configuración mediante **JSON**
+
+---
+
+# Instalación
+
+### Ejecutar directamente con npx
+
+```bash
+npx stress-http-tester test.json
+```
+
+### Instalar globalmente
+
+```bash
+npm install -g stress-http-tester
+```
+
+### Luego ejecutar:
+
+```bash
+stress-http-tester test.json
+```
+
+### Instalar como librería
+
+```bash
+npm install stress-http-tester
+```
+
+---
+
+# Uso desde la terminal (CLI)
+Ejemplo:
+```bash
+stress-http-tester config.json
+stress-http-tester test.json
+```
+
+---
+
+# Archivo de configuración
+
+Debes crear un archivo JSON con la configuración del test.
+
+Ejemplo `test.json`:
+
+```json
 {
   "url": "http://localhost:3000/api/test",
   "method": "POST",
   "requests": 100,
-  "concurrency": 20,
+  "concurrency": 10,
   "headers": {
     "Content-Type": "application/json"
   },
@@ -24,17 +91,56 @@ Crea un archivo con los test.json
     "success": true
   }
 }
-
 ```
 
-## Ejecución
-```bash
-stress-http-tester test.json
-```
 ---
 
+# Opciones de configuración
 
-```bash
+| Opción         | Descripción                          |
+| -------------- | ------------------------------------ |
+| url            | Endpoint de la API                   |
+| method         | Método HTTP (GET, POST, PUT, DELETE) |
+| requests       | Número total de peticiones           |
+| concurrency    | Número de peticiones concurrentes, simula varios usuarios al tiempo    |
+| headers        | Encabezados HTTP                     |
+| payload        | Cuerpo de la petición                |
+| expectedStatus | Código HTTP esperado                 |
+| expectedBody   | Estructura esperada de la respuesta  |
+
+---
+
+# Valores aleatorios en el payload
+
+Puedes usar el texto `<random>` dentro del payload.
+
+Ejemplo:
+
+```json
+{
+  "email": "usuario<random>@correo.com"
+}
+```
+
+Cada petición reemplazará `<random>` por un número diferente.
+
+Ejemplo generado:
+
+```
+usuario4839201@correo.com
+usuario9482349@correo.com
+usuario2342390@correo.com
+```
+
+Esto es útil para evitar datos duplicados en APIs.
+
+---
+
+# Ejemplo de salida en consola
+
+```
+STRESS HTTP TESTER
+
 **************************************************
    _____ _______ _____  ______ _____ _____
   / ____|__   __|  __ \|  ____/ ____/ ____|
@@ -49,17 +155,16 @@ stress-http-tester test.json
 
 Iniciando prueba de estrés...
 
-Progreso |████████████████████████████████████████| 100% || 5/5 Requests
+Progreso |████████████░░░░░░| 60% || 600/1000 Requests
 
 RESULTADOS
 
-Total requests: 100
-Exitosas: 0
-Fallidas: 100
-Tiempo promedio: 12520 ms
-Requests por segundo (RPS): 143.68
-
-
+Exitosas: 980
+Fallidas: 20
+Tiempo promedio: 120 ms
+Requests por segundo (RPS): 850
+```
+```js
 Detalle:
 {
   "exitosas": 0,
@@ -88,3 +193,69 @@ Detalle:
     }...
   ]
   ```
+
+---
+
+# Uso como librería
+
+También puedes usar **Stress HTTP Tester** dentro de un proyecto Node.js.
+
+```javascript
+const { stressTest } = require("stress-http-tester");
+
+(async () => {
+
+  const resultado = await stressTest({
+    url: "http://localhost:3000/api/test",
+    method: "POST",
+    requests: 100,
+    concurrency: 10,
+    payload: {
+      email: "test<random>@mail.com"
+    },
+    expectedStatus: 200
+  });
+
+  console.log(resultado);
+
+})();
+```
+
+---
+
+# Ejemplo de resultado
+
+```json
+{
+  "exitosas": 95,
+  "fallidas": 5,
+  "tiempo_promedio_ms": 135,
+  "criterio_exito": {
+    "status_esperado": 200
+  }
+}
+```
+
+---
+
+# Recomendaciones de rendimiento
+
+Para pruebas de carga más altas:
+
+* Aumentar la **concurrencia**
+* Evitar guardar logs de todas las peticiones
+
+# Contribuciones
+
+Las contribuciones son bienvenidas.
+Si encuentras un error o deseas proponer una mejora, puedes abrir un issue o enviar un pull request.
+
+# Licencia
+Uso personal y educativo únicamente.
+El uso comercial requiere autorización del autor.
+Ver archivo LICENSE para más información.
+
+# Autor
+- John Castiblanco
+- johnescastiblanco@gmail.com
+- https://waco.com.co
