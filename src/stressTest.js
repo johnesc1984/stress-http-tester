@@ -1,5 +1,7 @@
 const axios = require("axios");
 const cliProgress = require('cli-progress');
+let progressBar = false
+
 const {
   reemplazarRandomEnObjeto,
   cumpleExpectedBody
@@ -14,6 +16,9 @@ const bar = new cliProgress.SingleBar({
 });
 
 async function stressTest(config) {
+  if(config.progressBar){
+    progressBar = true
+  }
 
   const {
     url,
@@ -23,7 +28,7 @@ async function stressTest(config) {
     headers = { "Content-Type": "application/json" },
     payload = {},
     expectedStatus = 200,
-    expectedBody = null
+    expectedBody = null,
   } = config;
 
   if (!url) {
@@ -112,12 +117,13 @@ async function stressTest(config) {
 
 
 
-    bar.start(batchCount, 0);
+    progressBar == true?  bar.start(batchCount, 0) : null;
+
     for (let i = 0; i < batchCount; i++) {
 
 
 
-      bar.update(i+1);
+     progressBar == true? bar.update(i+1) :  null;
 
       const batchSize = Math.min(CONCURRENCY, TOTAL_REQUESTS - completed);
 
@@ -129,7 +135,8 @@ async function stressTest(config) {
       await Promise.all(batch);
 
     }
-    bar.stop();
+    
+    progressBar == true? bar.stop() : null;
 
     const avgTime = totalTime / (TOTAL_REQUESTS - failed || 1);
 

@@ -35,7 +35,7 @@ async function run() {
 
   try {
 
-        console.clear()
+    console.clear()
     console.log(`**************************************************`)
     console.log(`   _____ _______ _____  ______ _____ _____       `)
     console.log(`  / ____|__   __|  __ \\|  ____/ ____/ ____|      `)
@@ -48,6 +48,7 @@ async function run() {
     console.log(`             BY JOHN CASTIBLANCO                 `)
     console.log(`**************************************************`)
    
+    config.progressBar = true
     const result = await stressTest(config);
 
 
