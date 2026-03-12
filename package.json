@@ -1,0 +1,39 @@
+{
+  "name": "stress-http-tester",
+  "version": "1.0.0",
+  "description": "Simple HTTP stress test library for Node.js",
+  "main": "index.js",
+  "type": "commonjs",
+  "bin": {
+    "stress-http-tester": "./cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnesc1984/stress-http-tester.git"
+  },
+  "keywords": [
+    "stress",
+    "cli-progress",
+    "stress-test",
+    "api-test",
+    "load-test",
+    "http-test",
+    "performance",
+    "axios"
+  ],
+  "author": "John Castiblanco",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johnesc1984/stress-http-tester/issues"
+  },
+  "homepage": "https://github.com/johnesc1984/stress-http-tester#readme",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cli-progress": "^3.12.0"
+  },
+  "files": [
+    "cli.js",
+    "index.js",
+    "src"
+  ]
+}
