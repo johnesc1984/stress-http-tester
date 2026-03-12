@@ -213,10 +213,13 @@ const { stressTest } = require("stress-http-tester");
     payload: {
       email: "test<random>@mail.com"
     },
-    expectedStatus: 200
+    expectedStatus: 200,
+    expectedBody: {
+        state: 'ok'
+    }
   });
 
-  console.log(resultado);
+  response.json(resultado)
 
 })();
 ```
@@ -227,12 +230,31 @@ const { stressTest } = require("stress-http-tester");
 
 ```json
 {
-  "exitosas": 95,
-  "fallidas": 5,
-  "tiempo_promedio_ms": 135,
-  "criterio_exito": {
-    "status_esperado": 200
-  }
+    "exitosas": 100,
+    "fallidas": 0,
+    "tiempo_promedio_ms": 122.24,
+    "criterio_exito": {
+        "status_esperado": 200,
+        "body_esperado_base": {
+            "state": "ok"
+        }
+    },
+    "resumen_peticiones": [
+        {
+            "numero": 1,
+            "status": 200,
+            "tiempo_ms": 167,
+            "exito": true,
+            "motivo": null
+        },
+        {
+            "numero": 2,
+            "status": 200,
+            "tiempo_ms": 143,
+            "exito": true,
+            "motivo": null
+        }...
+    ]
 }
 ```
 
@@ -256,7 +278,6 @@ Si **stress-http-tester** te ayudó a probar tus APIs puedes apoyar su desarroll
 
 [![Donar con MercadoPago](https://img.shields.io/badge/Donar-MercadoPago-009EE3?logo=mercadopago&logoColor=white)](https://link.mercadopago.com.co/johncastiblanco)
 
-link.mercadopago.com.co/johncastiblanco
 
 # Licencia
 Uso personal y educativo únicamente.

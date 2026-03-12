@@ -4,18 +4,7 @@ const {
   reemplazarRandomEnObjeto,
   cumpleExpectedBody
 } = require("./utils");
-console.clear()
-console.log(`**************************************************`)
-console.log(`   _____ _______ _____  ______ _____ _____       `)
-console.log(`  / ____|__   __|  __ \\|  ____/ ____/ ____|      `)
-console.log(` | (___    | |  | |__) | |__ | (___| (___        `)
-console.log(`  \\___ \\   | |  |  _  /|  __| \\___ \\\\___ \\       `)
-console.log(`  ____) |  | |  | | \\ \\| |____ ____)|___) |     `)
-console.log(` |_____/   |_|  |_|  \\_\\______|_____/_____/      `)
-console.log(`                                                `)
-console.log(`           STRESS HTTP TESTER TOOL               `)
-console.log(`             BY JOHN CASTIBLANCO                 `)
-console.log(`**************************************************`)
+
 
 const bar = new cliProgress.SingleBar({
   format: 'Progreso |{bar}| {percentage}% || {value}/{total} Requests',
@@ -114,6 +103,7 @@ async function stressTest(config) {
 
 
   async function runTest() {
+
 
 
 
