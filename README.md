@@ -200,28 +200,52 @@ Detalle:
 
 También puedes usar **Stress HTTP Tester** dentro de un proyecto Node.js.
 
+## Uso Asíncrono
 ```javascript
 const { stressTest } = require("stress-http-tester");
 
-(async () => {
-
+  //usalo dentro de una funcion asíncrona
   const resultado = await stressTest({
     url: "http://localhost:3000/api/test",
     method: "POST",
     requests: 100,
     concurrency: 10,
     payload: {
-      email: "test<random>@mail.com"
+      email: "test<random>@mail.com",
+      pass:"123456"
     },
     expectedStatus: 200,
     expectedBody: {
-        state: 'ok'
+        state: 'ok',mensaje:"El correo test<random>@mail.com se ha creado correctamente"
     }
   });
 
-  response.json(resultado)
+  console.log(resultado)
+```
 
-})();
+
+## Uso con Callback
+```javascript
+const { stressTest } = require("stress-http-tester");
+
+  stressTest({
+    url: "http://localhost:3000/api/usuarios/Registro",
+    method: "POST",
+    requests: 100,
+    concurrency: 10,
+    payload: {
+      email: "test<random>@mail.com",
+      pass:"123456"
+    },
+    expectedStatus: 200,
+    expectedBody: {
+        state: 'ok',mensaje:"El correo test<random>@mail.com se ha creado correctamente"
+    }
+  }, function(resultado){
+    console.log(resultado)
+  });
+
+  
 ```
 
 ---
