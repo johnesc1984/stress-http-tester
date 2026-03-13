@@ -45,7 +45,7 @@ npx stress-http-tester test.json
 npm install -g stress-http-tester
 ```
 
-### Luego ejecutar:
+### Luego ejecutar
 
 ```bash
 stress-http-tester test.json
@@ -61,6 +61,7 @@ npm install stress-http-tester
 
 # Uso desde la terminal (CLI)
 Ejemplo:
+
 ```bash
 stress-http-tester config.json
 stress-http-tester test.json
@@ -225,6 +226,7 @@ const { stressTest } = require("stress-http-tester");
 
 
 ## Uso con Callback
+
 ```javascript
 const { stressTest } = require("stress-http-tester");
 
@@ -309,6 +311,7 @@ El uso comercial requiere autorización del autor.
 Ver archivo LICENSE para más información.
 
 # Autor
-- John Castiblanco
-- johnescastiblanco@gmail.com
-- https://waco.com.co
+
+* John Castiblanco
+* <johnescastiblanco@gmail.com>
+* <https://waco.com.co>
